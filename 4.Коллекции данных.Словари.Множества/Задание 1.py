@@ -18,6 +18,6 @@ for visits in geo_logs:
         if state == 'Россия':
             temp_list.append(visits)
 
-geo_logs = temp_list
-
-print(geo_logs)
+for elem in temp_list:
+    for key, value in elem.items():
+        print(f'{key}: {value}')

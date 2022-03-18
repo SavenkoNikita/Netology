@@ -14,4 +14,5 @@ for elem in ids.values():
 list_id_1 = list(set(list_id))
 list_id_1.sort()
 
-print(list_id_1)
+for elem in list_id_1:
+       print(elem)
