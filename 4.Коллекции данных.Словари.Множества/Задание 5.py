@@ -3,9 +3,8 @@
 
 data_list = ['2018-01-01', 'yandex', 'cpc', 100]
 data_dict = {}
-first_dict = {}
+first_dict = {data_list[-2]: data_list[-1]}
 
-first_dict[data_list[-2]] = data_list[-1]
 data_list.pop(-1)
 data_list.pop(-1)
 data_dict[data_list[-1]] = first_dict
