@@ -2,14 +2,13 @@ from pprint import pprint
 
 import requests
 
-
-# TOKEN = 'AQAAAAAIW_6wAADLW96xU0Wfq0PLv6PWycpdKTc'  # noqa
+import Secret_data
 
 
 class YandexDisk:
 
     def __init__(self):
-        self.token = 'AQAAAAAIW_6wAADLW96xU0Wfq0PLv6PWycpdKTc'  # noqa
+        self.token = Secret_data.YaDisk_token
 
     def get_headers(self):
         return {
@@ -34,11 +33,13 @@ class YandexDisk:
     def upload_file_to_disk(self, disk_file_path, filename):
         href_json = self._get_upload_link(disk_file_path=disk_file_path)
         href = href_json.get['href']
-        pprint(href)
         response = requests.put(href, data=open(filename, 'rb'))
+        print(response.status_code)
         response.raise_for_status()  # If status code is not 2##, break func, and error
         if response.status_code == 201:
             print('Success')
+        else:
+            print(response.status_code)
 
 
 if __name__ == '__main__':
