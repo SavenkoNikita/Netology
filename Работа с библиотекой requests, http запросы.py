@@ -1,56 +1,7 @@
+import datetime
 from pprint import pprint
 
 import requests
-
-import Secret_data
-
-
-class YandexDisk:
-
-    def __init__(self):
-        self.token = Secret_data.YaDisk_token
-
-    def get_headers(self):
-        return {
-            'Content-Type': 'application/json',
-            'Authorization': f'OAuth {self.token}'
-        }
-
-    def get_files_list(self):
-        """Возвращает список файлов с Я.Диска"""
-
-        files_url = 'https://cloud-api.yandex.net/v1/disk/resources/files'
-        headers = self.get_headers()
-        response = requests.get(files_url, headers=headers)
-        return response.json()
-
-    def _get_upload_link(self, disk_file_path):
-        upload_url = 'https://cloud-api.yandex.net/v1/disk/resources/upload'
-        headers = self.get_headers()
-        params = {'path': disk_file_path, 'overwrite': 'true'}
-        response = requests.get(upload_url, headers=headers, params=params)
-        pprint(response.json())
-        return response.json()
-
-    def upload_file_to_disk(self, disk_file_path, filename):
-        href_json = self._get_upload_link(disk_file_path=disk_file_path)
-        # pprint(href_json)
-        href = href_json['href']
-        response = requests.put(href, data=open(filename, 'rb'))
-        print(response.status_code)
-        response.raise_for_status()  # If status code is not 2##, break func, and print error
-        if response.status_code == 201:
-            print('Success')
-        else:
-            print(response.status_code)
-
-
-class Reddit:
-
-    def get_popular_videos(self):
-        url = 'https://www.reddit.com/r/gifs/top.json?t=day'
-        response = requests.get(url, headers={'User-agent': 'netology'})  # noqa
-        return response.json()
 
 
 class SuperHero:
@@ -87,36 +38,72 @@ class SuperHero:
 
 
 class YaUploader:
-    def __init__(self, token: str):
+    def __init__(self, token: str):  # noqa
         self.token = token
 
     def upload(self, file_path: str):
         """Метод загружает файлы по списку file_list на яндекс диск"""
-        # Тут ваша логика
-        # Функция может ничего не возвращать
+        upload_url = 'https://cloud-api.yandex.net/v1/disk/resources/upload'
+        headers = {'Content-Type': 'application/json', 'Authorization': f'OAuth {self.token}'}
+        params = {'path': file_path, 'overwrite': 'true'}
+        response = requests.get(upload_url, headers=headers, params=params)
+
+        href_json = response.json()
+        href = href_json['href']
+        response = requests.put(href, data=open(file_path, 'rb'))
+        response.raise_for_status()  # If status code is not 2##, break func, and print error
+        if response.status_code == 201:
+            print(f'Файл "{file_path}" успешно размещён на Я.Диск')
+        else:
+            print(f'При отправке файла возникла ошибка - {response.status_code}')
+
+
+class StackOverFlow:
+    def __init__(self):
+        self.todate = datetime.date.today()  # Текущая дата  # noqa
+        self.fromdate = self.todate - datetime.timedelta(days=2)  # текущая дата минус 2 дня  # noqa
+        self.params = {
+            'fromdate': self.fromdate,  # noqa
+            'todate': self.todate,  # noqa
+            'tagged': 'python',
+            'site': 'stackoverflow'
+        }
+        self.url = 'https://api.stackexchange.com/2.3/search/advanced/'
+
+    def get_question_python(self):
+        response = requests.get(self.url, params=self.params)
+        response.raise_for_status()
+        items_json = response.json()
+        items = items_json['items']
+
+        count = 1  # Счётчик вопросов
+        for elem in items:
+            print(f'{count}. {elem["title"]}')
+            count += 1
 
 
 if __name__ == '__main__':
-    # ya = YandexDisk()
-    # pprint(ya.get_files_list())
-    # file_txt = '/home/nik/Рабочий стол/Netology/test_upload_file.txt'  # noqa
-    # ya.upload_file_to_disk('netology/Test_file.txt', file_txt)  # noqa
-
-    # reddit = Reddit()
-    # pprint(reddit.get_popular_videos())
-
     ###
     # Задача №1
     # Кто самый умный супергерой?
+    print('Задача №1')
     pprint(SuperHero().who_is_the_smartest(['Hulk', 'Captain_America', 'Thanos']))
     ###
 
     ###
     # Задача №2
     # Нужно написать программу, которая принимает на вход путь до файла на компьютере и сохраняет на
-    # Яндекс.Диск с таким же именем.
-    # Получить путь к загружаемому файлу и токен от пользователя
-    path_to_file = '/home/nik/Рабочий стол/Netology/test_upload_file.txt'
-    token = Secret_data.YaDisk_token
+    # Яндекс.Диск с таким же именем. Получить путь к загружаемому файлу и токен от пользователя  # noqa
+    print('Задача №2')
+    path_to_file = input('Укажите путь к файлу который хотите загрузить на Я.Диск:\n')
+    token = input('Укажите ваш токен Я.Диска:\n')
     uploader = YaUploader(token)
-    result = uploader.upload(path_to_file)
+    uploader.upload(path_to_file)
+    ###
+
+    ###
+    # Задача №3(необязательная)
+    # Нужно написать программу, которая выводит все вопросы за последние два дня и содержит тэг 'Python'
+    print('Задача №3')
+    StackOverFlow().get_question_python()
+    ###
