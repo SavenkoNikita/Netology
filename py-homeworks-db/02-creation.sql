@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS style (
+	genre_id SERIAL PRIMARY KEY,
+	name NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS musician (
+  
