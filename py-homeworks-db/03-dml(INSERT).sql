@@ -137,35 +137,58 @@ INSERT INTO tracks(name, duration, album_id)
 VALUES('Clint Eastwood', 349, 4);
 
 INSERT INTO tracks(name, duration, album_id)
-VALUES('Flashing Lights', 237, 14);
+VALUES('Flashing Lights', 237, 5);
 
 INSERT INTO tracks(name, duration, album_id)
-VALUES('Mr. Brightside', 222, 5);
+VALUES('Mr. Brightside', 222, 6);
 
 INSERT INTO tracks(name, duration, album_id)
-VALUES('Yellow', 269, 6);
+VALUES('Yellow', 269, 7);
 
 INSERT INTO tracks(name, duration, album_id)
-VALUES('What A Wonderful World', 141, 7);
+VALUES('What A Wonderful World', 141, 8);
 
 INSERT INTO tracks(name, duration, album_id)
-VALUES('Nothing`s Happening By The Sea', 250, 8);
+VALUES('Nothing`s Happening By The Sea', 250, 9);
 
 INSERT INTO tracks(name, duration, album_id)
-VALUES('Hyperspeed', 316, 9);
+VALUES('Hyperspeed', 316, 10);
 
 INSERT INTO tracks(name, duration, album_id)
-VALUES('Billie Jean', 294, 10);
+VALUES('Billie Jean', 294, 11);
 
 INSERT INTO tracks(name, duration, album_id)
-VALUES('Hey Jude', 428, 11);
+VALUES('Hey Jude', 428, 12);
 
 INSERT INTO tracks(name, duration, album_id)
-VALUES('Don`t Be Cruel', 124, 12);
+VALUES('Don`t Be Cruel', 124, 13);
 
 INSERT INTO tracks(name, duration, album_id)
-VALUES('One Sweet Day', 283, 13);
+VALUES('One Sweet Day', 283, 14);
 
 
 -- добавляем сборники
 
+INSERT INTO collections(name, year_of_release)
+VALUES('With the Lights Out', 1992);
+
+INSERT INTO collections(name, year_of_release)
+VALUES('Official World Top 100 Airplay Songs', 2005);
+
+INSERT INTO collections(name, year_of_release)
+VALUES('Canadian Billboard Albums', 2001);
+
+INSERT INTO collections(name, year_of_release)
+VALUES('UK CD single', 2007);
+
+INSERT INTO collections(name, year_of_release)
+VALUES('UK Singles Chart', 2000);
+
+INSERT INTO collections(name, year_of_release)
+VALUES('Rock on the Net - ARC Weekly Top 40', 1967);
+
+INSERT INTO collections(name, year_of_release)
+VALUES('Brit Awards', 1992);
+
+INSERT INTO collections(name, year_of_release)
+VALUES('Billboard Hot 100', 1995);
