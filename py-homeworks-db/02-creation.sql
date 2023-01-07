@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS tracks (
 CREATE TABLE IF NOT EXISTS collections (
 	collection_id serial PRIMARY KEY,
 	name TEXT NOT NULL UNIQUE,
-	year_of_release DATE NOT NULL
+	year_of_release interval YEAR NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS tracks_in_collection (
