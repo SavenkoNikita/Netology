@@ -281,5 +281,49 @@ INSERT INTO albums_of_musicians(musician_id, album_id)
 VALUES(12, 14);
 
 
---
+--добавляем треки в коллекции
 
+INSERT INTO tracks_in_collection(collection_id, track_id)
+VALUES(1, 1);
+
+INSERT INTO tracks_in_collection(collection_id, track_id)
+VALUES(1, 4);
+
+INSERT INTO tracks_in_collection(collection_id, track_id)
+VALUES(2, 2);
+
+INSERT INTO tracks_in_collection(collection_id, track_id)
+VALUES(2, 3);
+
+INSERT INTO tracks_in_collection(collection_id, track_id)
+VALUES(2, 7);
+
+INSERT INTO tracks_in_collection(collection_id, track_id)
+VALUES(3, 5);
+
+INSERT INTO tracks_in_collection(collection_id, track_id)
+VALUES(4, 6);
+
+INSERT INTO tracks_in_collection(collection_id, track_id)
+VALUES(4, 10);
+
+INSERT INTO tracks_in_collection(collection_id, track_id)
+VALUES(5, 8);
+
+INSERT INTO tracks_in_collection(collection_id, track_id)
+VALUES(6, 9);
+
+INSERT INTO tracks_in_collection(collection_id, track_id)
+VALUES(7, 11);
+
+INSERT INTO tracks_in_collection(collection_id, track_id)
+VALUES(8, 12);
+
+INSERT INTO tracks_in_collection(collection_id, track_id)
+VALUES(8, 13);
+
+INSERT INTO tracks_in_collection(collection_id, track_id)
+VALUES(8, 14);
+
+INSERT INTO tracks_in_collection(collection_id, track_id)
+VALUES(8, 15);
