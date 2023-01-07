@@ -2,122 +2,170 @@
 
 
 INSERT INTO style(name)
-VALUES('rock')
+VALUES('rock');
 
 INSERT INTO style(name)
-VALUES('hip-hop')
+VALUES('hip-hop');
 
 INSERT INTO style(name)
-VALUES('Indie')
+VALUES('Indie');
 
 INSERT INTO style(name)
-VALUES('jazz')
+VALUES('jazz');
 
 INSERT INTO style(name)
-VALUES('electro')
+VALUES('electro');
 
 INSERT INTO style(name)
-VALUES('electronic rock')
+VALUES('electronic rock');
 
 INSERT INTO style(name)
-VALUES('funk')
+VALUES('funk');
 
 INSERT INTO style(name)
-VALUES('pop-rock')
+VALUES('pop-rock');
 
 INSERT INTO style(name)
-VALUES('rock `n` roll')
+VALUES('rock `n` roll');
 
 INSERT INTO style(name)
-VALUES('pop')
+VALUES('pop');
 
 
 -- добавляем музыкантов
 
 
 INSERT INTO musician(name)
-VALUES('Nirvana')
+VALUES('Nirvana');
 
 INSERT INTO musician(name)
-VALUES('Gorillaz')
+VALUES('Gorillaz');
 
 INSERT INTO musician(name)
-VALUES('Kanye West')
+VALUES('Kanye West');
 
 INSERT INTO musician(name)
-VALUES('The Killers')
+VALUES('The Killers');
 
 INSERT INTO musician(name)
-VALUES('Coldplay')
+VALUES('Coldplay');
 
 INSERT INTO musician(name)
-VALUES('Louis Armstrong')
+VALUES('Louis Armstrong');
 
 INSERT INTO musician(name)
-VALUES('Blank & Jones')
+VALUES('Blank & Jones');
 
 INSERT INTO musician(name)
-VALUES('The Prodigy')
+VALUES('The Prodigy');
 
 INSERT INTO musician(name)
-VALUES('Michael Jackson')
+VALUES('Michael Jackson');
 
 INSERT INTO musician(name)
-VALUES('The Beatles')
+VALUES('The Beatles');
 
 INSERT INTO musician(name)
-VALUES('Elvis Aaron Presley')
+VALUES('Elvis Aaron Presley');
 
 INSERT INTO musician(name)
-VALUES('Mariah Carey')
+VALUES('Mariah Carey');
 
 
 --добавляем альбомы
 
 
 INSERT INTO albums(name, year_of_release)
-VALUES('Nevermind', '1992')
+VALUES('Nevermind', '1992');
 
 INSERT INTO albums(name, year_of_release)
-VALUES('Demon Days', '2005')
+VALUES('Demon Days', '2005');
 
 INSERT INTO albums(name, year_of_release)
-VALUES('Incesticide', '1988')
+VALUES('Incesticide', '1988');
 
 INSERT INTO albums(name, year_of_release)
-VALUES('Gorillaz', '2001')
+VALUES('Gorillaz', '2001');
 
 INSERT INTO albums(name, year_of_release)
-VALUES('Hot Fuss', '2003')
+VALUES('Graduation', '2007');
 
 INSERT INTO albums(name, year_of_release)
-VALUES('Parachutes', '2000')
+VALUES('Hot Fuss', '2003');
 
 INSERT INTO albums(name, year_of_release)
-VALUES('What a Wonderful World', '1967')
+VALUES('Parachutes', '2000');
 
 INSERT INTO albums(name, year_of_release)
-VALUES('Relax Edition 14', '2022')
+VALUES('What a Wonderful World', '1967');
 
 INSERT INTO albums(name, year_of_release)
-VALUES('Experience', '1992')
+VALUES('Relax Edition 14', '2022');
 
 INSERT INTO albums(name, year_of_release)
-VALUES('Thriller', '1983')
+VALUES('Experience', '1992');
 
 INSERT INTO albums(name, year_of_release)
-VALUES('Anthology 3', '1968')
+VALUES('Thriller', '1983');
 
 INSERT INTO albums(name, year_of_release)
-VALUES('The King and Eye', '1956')
+VALUES('Anthology 3', '1968');
 
 INSERT INTO albums(name, year_of_release)
-VALUES('Daydream', '1955')
+VALUES('The King and Eye', '1956');
+
+INSERT INTO albums(name, year_of_release)
+VALUES('Daydream', '1955');
 
 
 -- добавляем треки
 
 
 INSERT INTO tracks(name, duration, album_id)
-VALUES('Smells Like Teen Spirit', 280, )
+VALUES('Smells Like Teen Spirit', 280, 1);
+
+INSERT INTO tracks(name, duration, album_id)
+VALUES('Feel Good Inc.', 207, 2);
+
+INSERT INTO tracks(name, duration, album_id)
+VALUES('All Alone', 210, 2);
+
+INSERT INTO tracks(name, duration, album_id)
+VALUES('Downer', 103, 3);
+
+INSERT INTO tracks(name, duration, album_id)
+VALUES('Clint Eastwood', 349, 4);
+
+INSERT INTO tracks(name, duration, album_id)
+VALUES('Flashing Lights', 237, 14);
+
+INSERT INTO tracks(name, duration, album_id)
+VALUES('Mr. Brightside', 222, 5);
+
+INSERT INTO tracks(name, duration, album_id)
+VALUES('Yellow', 269, 6);
+
+INSERT INTO tracks(name, duration, album_id)
+VALUES('What A Wonderful World', 141, 7);
+
+INSERT INTO tracks(name, duration, album_id)
+VALUES('Nothing`s Happening By The Sea', 250, 8);
+
+INSERT INTO tracks(name, duration, album_id)
+VALUES('Hyperspeed', 316, 9);
+
+INSERT INTO tracks(name, duration, album_id)
+VALUES('Billie Jean', 294, 10);
+
+INSERT INTO tracks(name, duration, album_id)
+VALUES('Hey Jude', 428, 11);
+
+INSERT INTO tracks(name, duration, album_id)
+VALUES('Don`t Be Cruel', 124, 12);
+
+INSERT INTO tracks(name, duration, album_id)
+VALUES('One Sweet Day', 283, 13);
+
+
+-- добавляем сборники
 
