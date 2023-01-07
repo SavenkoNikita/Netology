@@ -170,25 +170,116 @@ VALUES('One Sweet Day', 283, 14);
 -- добавляем сборники
 
 INSERT INTO collections(name, year_of_release)
-VALUES('With the Lights Out', 1992);
+VALUES('With the Lights Out', '1992');
 
 INSERT INTO collections(name, year_of_release)
-VALUES('Official World Top 100 Airplay Songs', 2005);
+VALUES('Official World Top 100 Airplay Songs', '2005');
 
 INSERT INTO collections(name, year_of_release)
-VALUES('Canadian Billboard Albums', 2001);
+VALUES('Canadian Billboard Albums', '2001');
 
 INSERT INTO collections(name, year_of_release)
-VALUES('UK CD single', 2007);
+VALUES('UK CD single', '2007');
 
 INSERT INTO collections(name, year_of_release)
-VALUES('UK Singles Chart', 2000);
+VALUES('UK Singles Chart', '2000');
 
 INSERT INTO collections(name, year_of_release)
-VALUES('Rock on the Net - ARC Weekly Top 40', 1967);
+VALUES('Rock on the Net - ARC Weekly Top 40', '1967');
 
 INSERT INTO collections(name, year_of_release)
-VALUES('Brit Awards', 1992);
+VALUES('Brit Awards', '1992');
 
 INSERT INTO collections(name, year_of_release)
-VALUES('Billboard Hot 100', 1995);
+VALUES('Billboard Hot 100', '1995');
+
+
+-- добавляем жанры в которых исполняют музыканты
+
+INSERT INTO styles_musicians(genre_id, musician_id)
+VALUES(1, 1);
+
+INSERT INTO styles_musicians(genre_id, musician_id)
+VALUES(1, 2);
+
+INSERT INTO styles_musicians(genre_id, musician_id)
+VALUES(2, 2);
+
+INSERT INTO styles_musicians(genre_id, musician_id)
+VALUES(2, 3);
+
+INSERT INTO styles_musicians(genre_id, musician_id)
+VALUES(3, 4);
+
+INSERT INTO styles_musicians(genre_id, musician_id)
+VALUES(3, 5);
+
+INSERT INTO styles_musicians(genre_id, musician_id)
+VALUES(4, 6);
+
+INSERT INTO styles_musicians(genre_id, musician_id)
+VALUES(5, 7);
+
+INSERT INTO styles_musicians(genre_id, musician_id)
+VALUES(6, 8);
+
+INSERT INTO styles_musicians(genre_id, musician_id)
+VALUES(7, 9);
+
+INSERT INTO styles_musicians(genre_id, musician_id)
+VALUES(8, 10);
+
+INSERT INTO styles_musicians(genre_id, musician_id)
+VALUES(9, 11);
+
+INSERT INTO styles_musicians(genre_id, musician_id)
+VALUES(10, 12);
+
+
+--добавляем альбомы музыкантов
+
+INSERT INTO albums_of_musicians(musician_id, album_id)
+VALUES(1, 1);
+
+INSERT INTO albums_of_musicians(musician_id, album_id)
+VALUES(1, 3);
+
+INSERT INTO albums_of_musicians(musician_id, album_id)
+VALUES(2, 2);
+
+INSERT INTO albums_of_musicians(musician_id, album_id)
+VALUES(2, 4);
+
+INSERT INTO albums_of_musicians(musician_id, album_id)
+VALUES(3, 5);
+
+INSERT INTO albums_of_musicians(musician_id, album_id)
+VALUES(4, 6);
+
+INSERT INTO albums_of_musicians(musician_id, album_id)
+VALUES(5, 7);
+
+INSERT INTO albums_of_musicians(musician_id, album_id)
+VALUES(6, 8);
+
+INSERT INTO albums_of_musicians(musician_id, album_id)
+VALUES(7, 9);
+
+INSERT INTO albums_of_musicians(musician_id, album_id)
+VALUES(8, 10);
+
+INSERT INTO albums_of_musicians(musician_id, album_id)
+VALUES(9, 11);
+
+INSERT INTO albums_of_musicians(musician_id, album_id)
+VALUES(10, 12);
+
+INSERT INTO albums_of_musicians(musician_id, album_id)
+VALUES(11, 13);
+
+INSERT INTO albums_of_musicians(musician_id, album_id)
+VALUES(12, 14);
+
+
+--
+
