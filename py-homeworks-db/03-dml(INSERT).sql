@@ -93,3 +93,31 @@ VALUES('Hot Fuss', '2003')
 INSERT INTO albums(name, year_of_release)
 VALUES('Parachutes', '2000')
 
+INSERT INTO albums(name, year_of_release)
+VALUES('What a Wonderful World', '1967')
+
+INSERT INTO albums(name, year_of_release)
+VALUES('Relax Edition 14', '2022')
+
+INSERT INTO albums(name, year_of_release)
+VALUES('Experience', '1992')
+
+INSERT INTO albums(name, year_of_release)
+VALUES('Thriller', '1983')
+
+INSERT INTO albums(name, year_of_release)
+VALUES('Anthology 3', '1968')
+
+INSERT INTO albums(name, year_of_release)
+VALUES('The King and Eye', '1956')
+
+INSERT INTO albums(name, year_of_release)
+VALUES('Daydream', '1955')
+
+
+-- добавляем треки
+
+
+INSERT INTO tracks(name, duration, album_id)
+VALUES('Smells Like Teen Spirit', 280, )
+
