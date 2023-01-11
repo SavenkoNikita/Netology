@@ -123,6 +123,9 @@ VALUES('Daydream', '1955');
 INSERT INTO albums(name, year_of_release)
 VALUES('Future Nostalgia', '2020');
 
+INSERT INTO albums(name, year_of_release)
+VALUES('Dua Lipa (Deluxe)', '2017');
+
 
 -- добавляем треки
 
@@ -174,6 +177,9 @@ VALUES('One Sweet Day', 283, 14);
 
 INSERT INTO tracks(name, duration, album_id)
 VALUES('Don`t Start Now', 183, 15);
+
+INSERT INTO tracks(name, duration, album_id)
+VALUES('Lost in Your Light (feat. Miguel)', 203, 16);
 
 
 -- добавляем сборники
@@ -298,8 +304,11 @@ VALUES(12, 14);
 INSERT INTO albums_of_musicians(musician_id, album_id)
 VALUES(13, 15);
 
+INSERT INTO albums_of_musicians(musician_id, album_id)
+VALUES(13, 16);
 
---добавляем треки в коллекции
+
+--добавляем треки в сборники
 
 INSERT INTO tracks_in_collection(collection_id, track_id)
 VALUES(1, 1);
