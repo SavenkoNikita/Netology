@@ -68,3 +68,15 @@ group by m."name"
 
 -- название альбомов, содержащих наименьшее количество треков
 
+select a."name" , count(t."name") 
+from albums a 
+full join tracks t on t.album_id = a.album_id
+group by a.album_id 
+having count(t."name") <= (
+select count(t."name") 
+from albums a 
+full join tracks t on t.album_id = a.album_id
+group by a.album_id
+order by count(t."name") asc
+limit 1)
+order by count(t."name")
