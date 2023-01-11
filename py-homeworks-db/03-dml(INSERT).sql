@@ -71,6 +71,9 @@ VALUES('Elvis Aaron Presley');
 INSERT INTO musician(name)
 VALUES('Mariah Carey');
 
+INSERT INTO musician(name)
+VALUES('Dua Lipa');
+
 
 --добавляем альбомы
 
@@ -116,6 +119,9 @@ VALUES('The King and Eye', '1956');
 
 INSERT INTO albums(name, year_of_release)
 VALUES('Daydream', '1955');
+
+INSERT INTO albums(name, year_of_release)
+VALUES('Future Nostalgia', '2020');
 
 
 -- добавляем треки
@@ -166,6 +172,9 @@ VALUES('Don`t Be Cruel', 124, 13);
 INSERT INTO tracks(name, duration, album_id)
 VALUES('One Sweet Day', 283, 14);
 
+INSERT INTO tracks(name, duration, album_id)
+VALUES('Don`t Start Now', 183, 15);
+
 
 -- добавляем сборники
 
@@ -192,6 +201,9 @@ VALUES('Brit Awards', '1992');
 
 INSERT INTO collections(name, year_of_release)
 VALUES('Billboard Hot 100', '1995');
+
+INSERT INTO collections(name, year_of_release)
+VALUES('Top Chart POP World 2020', '2020');
 
 
 -- добавляем жанры в которых исполняют музыканты
@@ -234,6 +246,9 @@ VALUES(9, 11);
 
 INSERT INTO styles_musicians(genre_id, musician_id)
 VALUES(10, 12);
+
+INSERT INTO styles_musicians(genre_id, musician_id)
+VALUES(10, 13);
 
 
 --добавляем альбомы музыкантов
@@ -279,6 +294,9 @@ VALUES(11, 13);
 
 INSERT INTO albums_of_musicians(musician_id, album_id)
 VALUES(12, 14);
+
+INSERT INTO albums_of_musicians(musician_id, album_id)
+VALUES(13, 15);
 
 
 --добавляем треки в коллекции
@@ -327,3 +345,6 @@ VALUES(8, 14);
 
 INSERT INTO tracks_in_collection(collection_id, track_id)
 VALUES(8, 15);
+
+INSERT INTO tracks_in_collection(collection_id, track_id)
+VALUES(9, 16);
