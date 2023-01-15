@@ -1,0 +1,224 @@
+import psycopg2
+
+class KD:
+
+    def __init__(self):
+        self.conn = psycopg2.connect(database='netology_db', user='postgres', password='109225081')  # noqa
+        self.cursor = self.conn.cursor()
+
+    def create_db(self):
+        """Функция, создающая структуру БД (таблицы)"""
+
+        try:
+            create_client_table_query = "CREATE TABLE IF NOT EXISTS client(" \
+                                        "id SERIAL PRIMARY KEY, " \
+                                        "first_name VARCHAR(100) NOT NULL, " \
+                                        "last_name VARCHAR(100) NOT NULL, " \
+                                        "email VARCHAR(100) NOT NULL);"
+
+            create_phone_table_query = "CREATE TABLE IF NOT EXISTS phone(" \
+                                       "id SERIAL PRIMARY KEY," \
+                                       "client_id INTEGER NOT NULL REFERENCES client(id)," \
+                                       "phone VARCHAR(20) DEFAULT NULL UNIQUE);"
+
+            self.cursor.execute(create_client_table_query)
+            self.cursor.execute(create_phone_table_query)
+
+            self.conn.commit()
+
+        except psycopg2.Error as error:
+            print(f"При создании таблицы возникла ошибка:\n<{error}>")
+            exit()
+
+    def add_client(self, first_name, last_name, email):
+        """Функция, позволяющая добавить нового клиента"""
+
+        try:
+            insert_query = f"INSERT INTO client(first_name, last_name, email) " \
+                           f"VALUES('{first_name}', '{last_name}', '{email}');"
+            self.cursor.execute(insert_query)
+            self.conn.commit()
+        except psycopg2.Error as error:
+            print(f"При добавлении нового клиента возникла ошибка:\n<{error}>")
+            exit()
+
+    def add_phone(self, client_id, phone):
+        """Функция, позволяющая добавить телефон для существующего клиента"""
+
+        try:
+            insert_query = f"INSERT INTO phone(client_id, phone) VALUES('{client_id}', '{phone}');"
+            self.cursor.execute(insert_query)
+            self.conn.commit()
+        except psycopg2.Error as error:
+            exit(f"При добавлении телефона возникла ошибка:\n<{error}>")
+
+    def edit_data_client(self):
+        """Функция, позволяющая изменить данные о клиенте"""
+
+        try:
+            answer = int(input('Какую информацию вы хотите изменить?\n'
+                               'Укажите цифру:\n'
+                               '1. Имя клиента\n'
+                               '2. Фамилию клиента\n'
+                               '3. Email\n'
+                               '4. Номер телефона\n'))
+
+            while True:
+                if answer == 1:
+                    id_record = int(input('Какой id записи необходимо отредактировать?\n'))
+                    new_first_name = input('Введите новое имя: ')
+
+                    update_query = f"UPDATE client " \
+                                   f"SET first_name='{new_first_name}' " \
+                                   f"WHERE id='{id_record}';"
+                    self.cursor.execute(update_query)
+
+                    self.conn.commit()
+                    break
+                elif answer == 2:
+                    id_record = input('Какой id записи необходимо отредактировать?\n')
+                    new_last_name = input('Введите новую фамилию: ')
+
+                    update_query = f"UPDATE client " \
+                                   f"SET last_name='{new_last_name}' " \
+                                   f"WHERE id='{id_record}';"
+                    self.cursor.execute(update_query)
+
+                    self.conn.commit()
+                    break
+                elif answer == 3:
+                    id_record = input('Какой id записи необходимо отредактировать?\n')
+                    new_email = input('Введите новый e-mail: ')
+
+                    update_query = f"UPDATE client " \
+                                   f"SET email='{new_email}' " \
+                                   f"WHERE id='{id_record}';"
+                    self.cursor.execute(update_query)
+
+                    self.conn.commit()
+                    break
+                elif answer == 4:
+                    phone = input('Введите номер телефона который необходимо отредактировать: ')
+                    new_phone = input('Введите новый номер телефона, который заменит собой старый: ')
+
+                    update_query = f"UPDATE phone " \
+                                   f"SET phone='{new_phone}' " \
+                                   f"WHERE phone='{phone}';"
+                    self.cursor.execute(update_query)
+
+                    self.conn.commit()
+                    break
+                else:
+                    print('Похоже такого варианта нет в списке')
+                    break
+        except psycopg2.Error as error:
+                print(f'При добавлении телефона возникла ошибка:\n<{error}>')
+
+    def delete_phone(self):
+        """Функция, позволяющая удалить телефон для существующего клиента"""
+
+        try:
+            id_record = input('Какой id записи где необходимо удалить телефон?')
+            phone = input('Введите номер телефона который хотите удалить: ')
+
+            delete_query = f"DELETE FROM phone " \
+                           f"WHERE client_id='{id_record}' AND phone='{phone}'"
+            self.cursor.execute(delete_query)
+            self.conn.commit()
+        except psycopg2.Error as error:
+                print(f'При добавлении телефона возникла ошибка:\n<{error}>')
+
+    def delete_client(self):
+        """Функция, позволяющая удалить существующего клиента"""
+
+        try:
+            id_client = input('Введите id клиента которого хотите удалить: ')
+            last_name = input('Введите фамилию клиента которого хотите удалить: ')
+
+            removing_link_phones_table = f"DELETE FROM phone " \
+                                         f"WHERE client_id='{id_client}'"
+            self.cursor.execute(removing_link_phones_table)
+
+            deleting_customer_information = f"DELETE FROM client " \
+                                            f"WHERE id='{id_client}' AND last_name='{last_name}'"
+            self.cursor.execute(deleting_customer_information)
+
+            self.conn.commit()
+        except psycopg2.Error as error:
+                print(f'При добавлении телефона возникла ошибка:\n<{error}>')
+
+    def find_client(self):
+        """Функция, позволяющая найти клиента по его данным (имени, фамилии, email или телефону)"""
+
+        try:
+            answer = int(input('Чтобы получить информацию о клиенте, необходимо указать один из параметров!\n'
+                               'По какому параметру будем искать?\n'
+                               '1. Имя клиента\n'
+                               '2. Фамилию клиента\n'
+                               '3. Email\n'
+                               '4. Номер телефона'))
+            while True:
+                if answer == 1:
+                    name = input('Введите имя для поиска информации о клиенте: ')
+
+                    select_query = f"SELECT id, first_name, last_name, email, phone " \
+                                   f"FROM client AS cl " \
+                                   f"LEFT JOIN phone AS ph ON ph.id = cl.id " \
+                                   f"WHERE name='{name}'"
+
+                    self.cursor.execute(select_query)
+
+                    print(self.cursor.fetchall())
+                elif answer == 2:
+                    last_name = input('Введите фамилию для поиска информации о клиенте: ')
+
+                    select_query = f"SELECT id, first_name, last_name, email, phone " \
+                                   f"FROM client AS cl " \
+                                   f"LEFT JOIN phone AS ph ON ph.id = cl.id " \
+                                   f"WHERE last_name='{last_name}'"
+
+                    self.cursor.execute(select_query)
+
+                    print(self.cursor.fetchall())
+                elif answer == 3:
+                    email = input('Введите email для поиска информации о клиенте: ')
+
+                    select_query = f"SELECT id, first_name, last_name, email, phone " \
+                                   f"FROM client AS cl " \
+                                   f"LEFT JOIN phone AS ph ON ph.id = cl.id " \
+                                   f"WHERE email='{email}'"
+
+                    self.cursor.execute(select_query)
+
+                    print(self.cursor.fetchall())
+                elif answer == 4:
+                    phone = input('Введите номер телефона для поиска информации о клиенте: ')
+
+                    select_query = f"SELECT id, first_name, last_name, email, phone " \
+                                   f"FROM client AS cl " \
+                                   f"LEFT JOIN phone AS ph ON ph.id = cl.id " \
+                                   f"WHERE phone='{phone}'"
+
+                    self.cursor.execute(select_query)
+                    print(self.cursor.fetchall())
+                else:
+                    print('К сожалению, Вы ввели неправильную команду, пожалуйста, повторите ввод')
+        except psycopg2.Error as error:
+                    print(f'При добавлении телефона возникла ошибка:\n<{error}>')
+
+if __name__ == '__main__':
+    KD().create_db()
+    KD().add_client('Никита', 'Серый', 'n_gray@com.com')
+    KD().add_client('Владимир', 'Гром', 'v.grom@com.com')
+    KD().add_client('Гаврила', 'Меченный', 'mechegun@com.com')
+    KD().add_client('Анна', 'Снежная', 'white_fox@com.com')
+    KD().add_client('Женя', 'Ужасный', 'bujheka@com.com')
+    KD().add_phone(1, "523135621")
+    KD().add_phone(2, "684513534")
+    KD().add_phone(3, "324531314")
+    KD().add_phone(4, "999852147")
+    KD().add_phone(5, "326577495")
+    KD().edit_data_client()
+    KD().delete_phone()
+    KD().delete_client()
+    KD().find_client()
