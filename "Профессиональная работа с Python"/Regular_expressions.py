@@ -5,13 +5,26 @@ import csv
 with open("phonebook_raw.csv") as f:
     rows = csv.reader(f, delimiter=",")
     contacts_list = list(rows)
-pprint(contacts_list)
+# pprint(contacts_list)
 
 ## 1. Выполните пункты 1-3 задания.
 ## 1.1 Поместить Фамилию, Имя и Отчество человека в поля lastname, firstname и surname соответственно. В записной
 # книжке изначально может быть Ф + ИО, ФИО, а может быть сразу правильно: Ф+И+О.
-for elements in contacts_list:
+contacts_list.pop(0)
 
+
+def pop_none_elem(my_list):
+    for elements in my_list:
+        for i in elements:
+            if i is None or i == '':
+                index = elements.index(i)
+                elements.pop(index)
+                pop_none_elem(my_list)
+
+
+pop_none_elem(contacts_list)  # Список без пустых элементов
+
+pprint(contacts_list)
 
 # ## 2. Сохраните получившиеся данные в другой файл.
 # ## Код для записи файла в формате CSV:
